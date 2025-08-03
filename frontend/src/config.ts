@@ -1,5 +1,3 @@
-const API_BASE_URL = import.meta.env.PROD
-  ? import.meta.env.VITE_BACKEND_URL
-  : "http://localhost:5000";
+const API_BASE_URL = "https://healthcare-appointment-backend-95ns.onrender.com";
 
 export default API_BASE_URL;
