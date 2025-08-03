@@ -58,6 +58,14 @@ A responsive full-stack web application that allows users to view doctor profile
 - **Challenge**: Handling states like "No data found" in search and booking form submission success.
 - **Solution**: Implemented conditional rendering based on filtered results and `success`/`error` flags to provide feedback to users gracefully.
 
+### 5. **\*CORS Issues During API Integration**
+
+- **challenge**: While connecting the frontend with the backend, I encountered CORS (Cross-Origin Resource Sharing) errors when making API requests from the browser. The browser blocked the requests since the frontend and backend were running on different ports.
+
+- **solution**: I resolved this by using the cors middleware in my Express.js backend. I added the following to my backend index.js file:
+  import cors from "cors";
+  app.use(cors());
+
 ---
 
 ## ✅ How to Run Locally
