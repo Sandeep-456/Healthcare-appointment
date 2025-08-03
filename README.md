@@ -75,12 +75,6 @@ If given more time, the following improvements and features could be added:
 
 ---
 
-## 📸 Screenshots (Optional)
-
-_Add screenshots or screen recordings to visually showcase your application._
-
----
-
 ## ✅ How to Run Locally
 
 ```bash
