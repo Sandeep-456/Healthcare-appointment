@@ -36,7 +36,8 @@ const DoctorsProfile = () => {
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/doctors/${id}`);
+        const API_BASE_URL = import.meta.env.PROD ? import.meta.env.VITE_BACKEND_URL : "http://localhost:5000";
+        const response = await fetch(`${API_BASE_URL}/api/doctors/${id}`);
         if (!response.ok) throw new Error("Failed to fetch doctor");
         const data = await response.json();
         setDoctor(data);
@@ -48,11 +49,6 @@ const DoctorsProfile = () => {
     };
     fetchDoctor();
   }, [id]);
-
-  const handleBookingSuccess = () => {
-    setShowBookingForm(false);
-    alert("Appointment booked successfully!");
-  };
 
   if (loading) {
     return (
@@ -173,10 +169,6 @@ const DoctorsProfile = () => {
               ((close: () => void) => (
                 <BookingForm
                   doctor={doctor}
-                  onSuccess={() => {
-                    handleBookingSuccess();
-                    close();
-                  }}
                   onCancel={() => {
                     close();
                     setShowBookingForm(false);
