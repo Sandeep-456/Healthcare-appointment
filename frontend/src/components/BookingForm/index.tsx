@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_BASE_URL from "../../config.ts";
 import "./index.css";
 
 interface Doctor {
@@ -11,10 +12,7 @@ interface BookingFormProps {
   onCancel: () => void;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({
-  doctor,
-  onCancel,
-}) => {
+const BookingForm: React.FC<BookingFormProps> = ({ doctor, onCancel }) => {
   const [patientName, setPatientName] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
   const [appointmentDate, setAppointmentDate] = useState("");
@@ -26,7 +24,6 @@ const BookingForm: React.FC<BookingFormProps> = ({
     setError(null);
     setSuccess(false);
 
-    const API_BASE_URL = import.meta.env.PROD ? import.meta.env.VITE_BACKEND_URL : "http://localhost:5000";
     try {
       const res = await fetch(`${API_BASE_URL}/api/appointments`, {
         method: "POST",

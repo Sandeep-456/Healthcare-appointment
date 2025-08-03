@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import API_BASE_URL from "../../config.ts";
 import "./index.css";
 
 interface Doctor {
@@ -18,7 +19,6 @@ const DoctorList = () => {
 
   useEffect(() => {
     setLoading(true);
-    const API_BASE_URL = import.meta.env.PROD ? import.meta.env.VITE_BACKEND_URL : "http://localhost:5000";
     fetch(`${API_BASE_URL}/api/doctors`)
       .then((res) => res.json())
       .then((data) => {
