@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import BookingForm from "../../components/BookingForm";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoMdVideocam } from "react-icons/io";
+import { LiaHospitalSolid, LiaLanguageSolid } from "react-icons/lia";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { GiBrain } from "react-icons/gi";
+import { RiMoneyRupeeCircleLine } from "react-icons/ri";
+import { FaStar } from "react-icons/fa";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import API_BASE_URL from "../../config.ts";
@@ -105,22 +110,50 @@ const DoctorsProfile = () => {
             </p>
 
             <div className="mt-3 text-sm text-gray-600 space-y-1">
-              {doctor.hospital_name && <p>🏥 {doctor.hospital_name}</p>}
-              {doctor.location && <p>📍 {doctor.location}</p>}
+              {doctor.hospital_name && (
+                <div className="flex items-center gap-2 mb-2">
+                  {" "}
+                  <LiaHospitalSolid className="text-2xl text-blue-600" />
+                  <p>{doctor.hospital_name}</p>
+                </div>
+              )}
+              {doctor.location && (
+                <div className="flex items-center gap-2 mb-2">
+                  <FaMapMarkerAlt className="text-2xl text-red-600" />
+                  <p>{doctor.location}</p>
+                </div>
+              )}
               {doctor.experience_years !== undefined && (
-                <p>🧠 {doctor.experience_years}+ years experience</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <GiBrain className="text-2xl text-pink-400" />
+                  <p>{doctor.experience_years}+ years experience</p>
+                </div>
               )}
               {doctor.consultation_fee !== undefined && (
-                <p>💰 ₹{doctor.consultation_fee} consultation fee</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <RiMoneyRupeeCircleLine className="text-2xl text-yellow-400" />
+                  <p>{doctor.consultation_fee} consultation fee</p>
+                </div>
               )}
-              {doctor.languages_spoken && <p>🗣️ {doctor.languages_spoken}</p>}
+              {doctor.languages_spoken && (
+                <div className="flex items-center gap-2 mb-2">
+                  <LiaLanguageSolid className="text-2xl text-purple-600" />
+                  <p>{doctor.languages_spoken}</p>
+                </div>
+              )}
               {doctor.supports_video_consult && (
-                <p>📹 Video Consult Available</p>
+                <div className="flex items-center gap-2 mb-2">
+                  <IoMdVideocam className="text-2xl text-green-500" />
+                  <p>Video Consult Available</p>
+                </div>
               )}
               {doctor.rating && doctor.review_count !== undefined && (
-                <p>
-                  ⭐ {doctor.rating} ({doctor.review_count} reviews)
-                </p>
+                <div className="flex items-center gap-2 mb-2">
+                  <FaStar className="text-yellow-500 text-2xl" />
+                  <p>
+                    {doctor.rating} ({doctor.review_count} reviews)
+                  </p>
+                </div>
               )}
             </div>
           </div>
