@@ -1,0 +1,11 @@
+.bg-container {
+  padding: 80px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  width: 100%;
+  outline: none;
+}
