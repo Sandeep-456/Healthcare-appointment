@@ -36,21 +36,6 @@ A responsive full-stack web application that allows users to view doctor profile
 
 ---
 
-## 💡 Improvements with More Time
-
-If given more time, the following improvements and features could be added:
-
-- **Authentication** for both users and doctors.
-- **Admin Panel** to add/edit doctors and view appointments.
-- **Doctor Availability Calendar** with real-time slot checking.
-- **Email Notifications** for booking confirmations.
-- **Review System** so users can rate and comment on doctor experiences.
-- **Pagination and Filtering** on the doctors list.
-- **Search Autocomplete** and advanced search options.
-- **Better Form Validation** using libraries like `react-hook-form`.
-
----
-
 ## ⚙️ Challenges Faced and Solutions
 
 ### 1. **Handling Popups in TypeScript**
