@@ -11,6 +11,7 @@ const db = mysql.createConnection({
   family: 4,
   ssl: {
     ca: fs.readFileSync("./ca.pem"),
+    rejectUnauthorized: false,
   },
 });
 

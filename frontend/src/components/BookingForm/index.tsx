@@ -8,13 +8,11 @@ interface Doctor {
 
 interface BookingFormProps {
   doctor: Doctor;
-  onSuccess: () => void;
   onCancel: () => void;
 }
 
 const BookingForm: React.FC<BookingFormProps> = ({
   doctor,
-  onSuccess,
   onCancel,
 }) => {
   const [patientName, setPatientName] = useState("");
