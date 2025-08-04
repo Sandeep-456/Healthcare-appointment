@@ -51,7 +51,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ doctor, onCancel }) => {
 
   return (
     <div className="w-full max-w-md mx-auto px-4 py-6 sm:px-6 sm:py-8">
-      <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 w-full">
+      <div className="bg-white rounded-lg p-6 sm:p-8 w-full">
         <h2 className="text-xl font-bold text-center mb-6">
           Book Appointment with <br />
           <span className="text-blue-600">{doctor.name}</span>
