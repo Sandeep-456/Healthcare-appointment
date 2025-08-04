@@ -39,8 +39,8 @@ const DoctorList = () => {
   );
 
   return (
-    <div className="bg-container">
-      <h1 className="text-5xl font-bold text-center mb-20 Roboto">
+    <div className="bg-container px-4 sm:px-6 lg:px-8">
+      <h1 className="text-4xl sm:text-sm/2 font-bold text-center mb-12 sm:mb-20 Roboto">
         Healthcare Appointment Booking
       </h1>
 
@@ -50,21 +50,21 @@ const DoctorList = () => {
         </div>
       ) : (
         <>
-          <div className="search-container w-150 p-2 border rounded mb-10">
-            <div className="mr-3">
+          <div className="search-container flex items-center gap-2 w-full max-w-lg mx-auto p-2 border rounded mb-10">
+            <div className="text-gray-500">
               <FaSearch />
             </div>
             <input
               type="text"
               placeholder="Search by name or specialization"
-              className="search-input"
+              className="search-input w-full outline-none"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
           {filteredDoctors.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredDoctors.map((doctor) => (
                 <div
                   key={doctor.id}
@@ -73,14 +73,16 @@ const DoctorList = () => {
                   <img
                     src={doctor.profile_image_url || "/default-doctor.png"}
                     alt={doctor.name}
-                    className="w-32 h-32 rounded-full mx-auto mb-4"
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover"
                   />
-                  <h2 className="text-xl font-bold">{doctor.name}</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-xl font-bold text-center">
+                    {doctor.name}
+                  </h2>
+                  <p className="text-gray-600 text-center">
                     {doctor.specialization || "Specialization not specified"}
                   </p>
                   <div
-                    className={`flex items-center gap-2 px-4 py-1 w-fit rounded-full mt-3 ${
+                    className={`flex items-center justify-center gap-2 px-4 py-1 w-fit mx-auto rounded-full mt-3 ${
                       doctor.availability ? "bg-green-500/20" : "bg-red-500/20"
                     }`}
                   >
@@ -106,9 +108,13 @@ const DoctorList = () => {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center w-full h-[100%] p-4 justify-center">
-              <img className="w-[40%]" src="/assets/no_data_found.svg" />
-              <p className="text-black text-4xl font-bold mt-6">
+            <div className="flex flex-col items-center w-full p-4 justify-center">
+              <img
+                className="w-[80%] sm:w-[40%] max-w-xs"
+                src="/assets/no_data_found.svg"
+                alt="No Data Found"
+              />
+              <p className="text-black text-2xl sm:text-4xl font-bold mt-6">
                 No Data Found
               </p>
             </div>

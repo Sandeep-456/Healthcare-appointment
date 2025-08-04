@@ -3,10 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import BookingForm from "../../components/BookingForm";
 import { IoIosArrowBack, IoMdVideocam } from "react-icons/io";
 import { LiaHospitalSolid, LiaLanguageSolid } from "react-icons/lia";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
-import { FaStar } from "react-icons/fa";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import API_BASE_URL from "../../config.ts";
@@ -69,28 +68,28 @@ const DoctorsProfile = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-6 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-center font-bold text-4xl Roboto m-7">
+      <h1 className="text-center font-bold text-3xl sm:text-4xl Roboto mb-6">
         Doctor Profile
       </h1>
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-4 sm:p-6">
         <Link
           to="/"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 text-sm sm:text-base"
         >
           <IoIosArrowBack className="mr-2" />
           Back
         </Link>
 
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
           <img
             src={doctor.profile_image_url || "/default-doctor.png"}
             alt={doctor.name}
-            className="w-28 h-28 rounded-full object-cover border border-gray-300"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border border-gray-300"
           />
 
-          <div className="flex-1">
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-bold text-gray-800">
+          <div className="flex-1 w-full">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
                 {doctor.name}
               </h2>
               {doctor.is_verified && (
@@ -100,7 +99,9 @@ const DoctorsProfile = () => {
               )}
             </div>
 
-            <p className="text-sm text-gray-500">{doctor.specialization}</p>
+            <p className="text-sm text-gray-500 mt-1">
+              {doctor.specialization}
+            </p>
             <p
               className={`text-sm mt-1 ${
                 doctor.availability ? "text-green-600" : "text-red-500"
@@ -109,47 +110,46 @@ const DoctorsProfile = () => {
               {doctor.availability ? "Available Today" : "Not Available"}
             </p>
 
-            <div className="mt-3 text-sm text-gray-600 space-y-1">
+            <div className="mt-4 text-sm text-gray-600 space-y-3">
               {doctor.hospital_name && (
-                <div className="flex items-center gap-2 mb-2">
-                  {" "}
-                  <LiaHospitalSolid className="text-2xl text-blue-600" />
+                <div className="flex items-center gap-2">
+                  <LiaHospitalSolid className="text-xl text-blue-600" />
                   <p>{doctor.hospital_name}</p>
                 </div>
               )}
               {doctor.location && (
-                <div className="flex items-center gap-2 mb-2">
-                  <FaMapMarkerAlt className="text-2xl text-red-600" />
+                <div className="flex items-center gap-2">
+                  <FaMapMarkerAlt className="text-xl text-red-600" />
                   <p>{doctor.location}</p>
                 </div>
               )}
               {doctor.experience_years !== undefined && (
-                <div className="flex items-center gap-2 mb-2">
-                  <GiBrain className="text-2xl text-pink-400" />
+                <div className="flex items-center gap-2">
+                  <GiBrain className="text-xl text-pink-400" />
                   <p>{doctor.experience_years}+ years experience</p>
                 </div>
               )}
               {doctor.consultation_fee !== undefined && (
-                <div className="flex items-center gap-2 mb-2">
-                  <RiMoneyRupeeCircleLine className="text-2xl text-yellow-400" />
-                  <p>{doctor.consultation_fee} consultation fee</p>
+                <div className="flex items-center gap-2">
+                  <RiMoneyRupeeCircleLine className="text-xl text-yellow-500" />
+                  <p>₹{doctor.consultation_fee} consultation fee</p>
                 </div>
               )}
               {doctor.languages_spoken && (
-                <div className="flex items-center gap-2 mb-2">
-                  <LiaLanguageSolid className="text-2xl text-purple-600" />
+                <div className="flex items-center gap-2">
+                  <LiaLanguageSolid className="text-xl text-purple-600" />
                   <p>{doctor.languages_spoken}</p>
                 </div>
               )}
               {doctor.supports_video_consult && (
-                <div className="flex items-center gap-2 mb-2">
-                  <IoMdVideocam className="text-2xl text-green-500" />
+                <div className="flex items-center gap-2">
+                  <IoMdVideocam className="text-xl text-green-500" />
                   <p>Video Consult Available</p>
                 </div>
               )}
               {doctor.rating && doctor.review_count !== undefined && (
-                <div className="flex items-center gap-2 mb-2">
-                  <FaStar className="text-yellow-500 text-2xl" />
+                <div className="flex items-center gap-2">
+                  <FaStar className="text-yellow-500 text-xl" />
                   <p>
                     {doctor.rating} ({doctor.review_count} reviews)
                   </p>
@@ -184,7 +184,7 @@ const DoctorsProfile = () => {
           </div>
         </div>
 
-        <div className="mt-6 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Popup
             modal
             open={showBookingForm}
